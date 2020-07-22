@@ -17,8 +17,14 @@
     "pretty-quick": "^2.0.1"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "nedb-promises": "^4.0.3"
+    "express-session": "^1.17.1",
+    "nedb-promises": "^4.0.3",
+    "passport": "^0.4.1",
+    "passport-oauth": "^1.0.0",
+    "passport-oauth2-refresh": "^2.0.0",
+    "request": "^2.88.2"
   }
 }
