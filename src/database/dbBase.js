@@ -19,11 +19,11 @@ export const findOne = async (collection, query) => {
   }
 };
 
-export const find = async collection => {
+export const find = async (collection, query) => {
   try {
     await client.connect();
     const colObj = await client.db().collection(collection);
-    return await colObj.find({}).toArray();
+    return await colObj.find(query).toArray();
   } catch (e) {
     console.error(e);
   } finally {
