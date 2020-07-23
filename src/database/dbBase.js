@@ -30,3 +30,27 @@ export const find = async (collection, query) => {
     await client.close();
   }
 };
+
+export const insertOne = async (collection, obj) => {
+  try {
+    await client.connect();
+    const colObj = await client.db().collection(collection);
+    await colObj.insertOne(obj);
+  } catch (e) {
+    console.error(e);
+  } finally {
+    await client.close();
+  }
+};
+
+export const updateOne = async (collection, query, newValues) => {
+  try {
+    await client.connect();
+    const colObj = await client.db().collection(collection);
+    await colObj.updateOne(query, { $set: newValues });
+  } catch (e) {
+    console.error(e);
+  } finally {
+    await client.close();
+  }
+};
