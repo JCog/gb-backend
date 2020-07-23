@@ -4,6 +4,7 @@ import session from 'express-session';
 import cors from 'cors';
 
 import authRouter from './routes/auth';
+import quotesRouter from './routes/quotes';
 
 const app = express();
 const port = 3000;
@@ -15,7 +16,9 @@ app.use(cors());
 app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use('/auth', authRouter);
+app.use('/quotes', quotesRouter);
 
 app.get('/', async (req, res) => {
   res.json(req.user);
