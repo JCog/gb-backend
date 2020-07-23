@@ -4,6 +4,7 @@ import session from 'express-session';
 import cors from 'cors';
 
 import authRouter from './routes/auth';
+import commandsRouter from './routes/commands';
 import quotesRouter from './routes/quotes';
 
 const app = express();
@@ -18,6 +19,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/auth', authRouter);
+app.use('/commands', commandsRouter);
 app.use('/quotes', quotesRouter);
 
 app.get('/', async (req, res) => {
