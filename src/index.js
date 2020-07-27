@@ -6,6 +6,7 @@ import cors from 'cors';
 import authRouter from './routes/auth';
 import commandsRouter from './routes/commands';
 import quotesRouter from './routes/quotes';
+import watchtimeRouter from './routes/watchtime';
 
 const app = express();
 const port = 3000;
@@ -21,6 +22,7 @@ app.use(passport.session());
 app.use('/auth', authRouter);
 app.use('/commands', commandsRouter);
 app.use('/quotes', quotesRouter);
+app.use('/watchtime', watchtimeRouter);
 
 app.get('/', async (req, res) => {
   res.json(req.user);
