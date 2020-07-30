@@ -5,6 +5,7 @@ import cors from 'cors';
 
 import authRouter from './routes/auth';
 import commandsRouter from './routes/commands';
+import minecraftRouter from './routes/minecraft-whitelist';
 import quotesRouter from './routes/quotes';
 import watchtimeRouter from './routes/watchtime';
 
@@ -21,6 +22,7 @@ app.use(passport.session());
 
 app.use('/auth', authRouter);
 app.use('/commands', commandsRouter);
+app.use('/minecraft-whitelist', minecraftRouter);
 app.use('/quotes', quotesRouter);
 app.use('/watchtime', watchtimeRouter);
 
