@@ -1,12 +1,20 @@
 import { MongoClient } from 'mongodb';
 
-const uri = 'mongodb://localhost:27017';
+const uri = 'localhost:27017';
 const dbName = 'goombotio';
-const client = new MongoClient(`${uri}/${dbName}`, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-client.connect();
+const DB_USERNAME = process.env.DB_USERNAME;
+const DB_PASSWORD = process.env.DB_PASSWORD;
+
+console.log(DB_PASSWORD);
+
+const client = new MongoClient(
+  `mongodb://${DB_USERNAME}:${DB_PASSWORD}@${uri}/${dbName}?authMechanism=DEFAULT`,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+);
+client.connect().then(r => console.log('Successfully connected to database'));
 
 export const findOne = async (collection, query) => {
   try {
