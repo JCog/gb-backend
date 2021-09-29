@@ -11,12 +11,14 @@ import watchtimeRouter from './routes/watchtime';
 
 const app = express();
 const port = 3000;
+const path = require('path');
 
 const SESSION_SECRET = process.env.GB_SESSION_SECRET;
 
 app.use(session({ secret: SESSION_SECRET, resave: false, saveUninitialized: false }));
 app.use(cors());
 app.use(express.json());
+app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use(passport.initialize());
 app.use(passport.session());
 
