@@ -7,6 +7,7 @@ import authRouter from './routes/auth';
 import commandsRouter from './routes/commands';
 import minecraftRouter from './routes/minecraft-whitelist';
 import quotesRouter from './routes/quotes';
+import subsRouter from './routes/subs';
 import watchtimeRouter from './routes/watchtime';
 
 const app = express();
@@ -26,6 +27,7 @@ app.use('/auth', authRouter);
 app.use('/commands', commandsRouter);
 app.use('/minecraft-whitelist', minecraftRouter);
 app.use('/quotes', quotesRouter);
+app.use('/subs', subsRouter);
 app.use('/watchtime', watchtimeRouter);
 
 app.get('/', async (req, res) => {
