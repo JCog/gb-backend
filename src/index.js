@@ -2,6 +2,8 @@ import express from 'express';
 import passport from 'passport';
 import session from 'express-session';
 import cors from 'cors';
+import apicache from 'apicache'
+import redis from 'redis';
 
 import authRouter from './routes/auth';
 import commandsRouter from './routes/commands';
@@ -13,6 +15,7 @@ import watchtimeRouter from './routes/watchtime';
 const app = express();
 const port = 3000;
 const path = require('path');
+const cacheWithRedis = apicache.options({ redisClient: redis.createClient() }).middleware;
 
 const SESSION_SECRET = process.env.GB_SESSION_SECRET;
 
@@ -22,6 +25,7 @@ app.use(express.json());
 app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cacheWithRedis('5 seconds'));
 
 app.use('/auth', authRouter);
 app.use('/commands', commandsRouter);

@@ -17,6 +17,7 @@
     "pretty-quick": "^2.0.1"
   },
   "dependencies": {
+    "apicache": "^1.6.2",
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -26,6 +27,7 @@
     "passport": "^0.4.1",
     "passport-oauth": "^1.0.0",
     "passport-oauth2-refresh": "^2.0.0",
+    "redis": "^3.1.2",
     "request": "^2.88.2"
   }
 }
