@@ -25,14 +25,13 @@ app.use(express.json());
 app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cacheWithRedis('5 seconds'));
 
 app.use('/auth', authRouter);
-app.use('/commands', commandsRouter);
-app.use('/minecraft-whitelist', minecraftRouter);
-app.use('/quotes', quotesRouter);
-app.use('/subs', subsRouter);
-app.use('/watchtime', watchtimeRouter);
+app.use('/commands', cacheWithRedis('5 seconds'), commandsRouter);
+app.use('/minecraft-whitelist', cacheWithRedis('5 seconds'), minecraftRouter);
+app.use('/quotes', cacheWithRedis('5 seconds'), quotesRouter);
+app.use('/subs', cacheWithRedis('5 seconds'), subsRouter);
+app.use('/watchtime', cacheWithRedis('5 seconds'), watchtimeRouter);
 
 app.get('/', async (req, res) => {
   res.json(req.user);
