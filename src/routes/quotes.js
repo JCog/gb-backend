@@ -10,7 +10,7 @@ quotes.get('/:id', async (req, res) => {
 });
 
 quotes.get('/', async (req, res) => {
-  const quoteList = await findAllQuotes();
+  const quoteList = await findAllApprovedQuotes();
   res.json({ count: quoteList.length, quoteList });
 });
 
