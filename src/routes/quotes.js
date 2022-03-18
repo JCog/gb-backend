@@ -1,5 +1,5 @@
 import express from 'express';
-import { findAllQuotes, findQuoteById } from '../database/quotesDb';
+import { findAllApprovedQuotes, findQuoteById } from '../database/quotesDb';
 
 const quotes = express.Router();
 
@@ -10,7 +10,7 @@ quotes.get('/:id', async (req, res) => {
 });
 
 quotes.get('/', async (req, res) => {
-  const quoteList = await findAllQuotes();
+  const quoteList = await findAllApprovedQuotes();
   res.json({ count: quoteList.length, quoteList });
 });
 
