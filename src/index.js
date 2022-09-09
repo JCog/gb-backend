@@ -9,6 +9,8 @@ import authRouter from './routes/auth';
 import commandsRouter from './routes/commands';
 import minecraftRouter from './routes/minecraft-whitelist';
 import quotesRouter from './routes/quotes';
+import recentCheerRouter from './routes/recent-cheer';
+import recentSubRouter from './routes/recent-sub';
 import subsRouter from './routes/subs';
 import watchtimeRouter from './routes/watchtime';
 
@@ -30,6 +32,8 @@ app.use('/auth', authRouter);
 app.use('/commands', cacheWithRedis('5 seconds'), commandsRouter);
 app.use('/minecraft-whitelist', cacheWithRedis('5 seconds'), minecraftRouter);
 app.use('/quotes', cacheWithRedis('5 seconds'), quotesRouter);
+app.use('/recent-cheer', cacheWithRedis('5 seconds'), recentCheerRouter);
+app.use('/recent-sub', cacheWithRedis('5 seconds'), recentSubRouter);
 app.use('/subs', cacheWithRedis('5 seconds'), subsRouter);
 app.use('/watchtime', cacheWithRedis('5 seconds'), watchtimeRouter);
 
