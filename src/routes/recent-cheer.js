@@ -5,7 +5,7 @@ const fs = require('fs')
 
 subs.get('/', async (req, res) => {
   try {
-    const data = fs.readFileSync('/srv/goombotio/recentCheer.txt', 'utf-8');
+    const data = fs.readFileSync('/srv/goombotio/recent_cheer.txt', 'utf-8');
     res.set('Content-Type', 'text/html');
     res.send(data);
   }
