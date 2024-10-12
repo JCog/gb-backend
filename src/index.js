@@ -7,6 +7,7 @@ import redis from 'redis';
 
 import authRouter from './routes/auth';
 import commandsRouter from './routes/commands';
+import heartbeatRouter from './routes/heartbeat';
 import minecraftRouter from './routes/minecraft-whitelist';
 import quotesRouter from './routes/quotes';
 import recentCheerRouter from './routes/recent-cheer';
@@ -30,6 +31,7 @@ app.use(passport.session());
 
 app.use('/auth', authRouter);
 app.use('/commands', cacheWithRedis('5 seconds'), commandsRouter);
+app.use('/gb-heartbeat', cacheWithRedis('5 seconds'), heartbeatRouter);
 app.use('/minecraft-whitelist', cacheWithRedis('5 seconds'), minecraftRouter);
 app.use('/quotes', cacheWithRedis('5 seconds'), quotesRouter);
 app.use('/recent-cheer', cacheWithRedis('5 seconds'), recentCheerRouter);
