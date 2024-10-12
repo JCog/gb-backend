@@ -1,9 +1,9 @@
 import express from 'express';
 
-const subs = express.Router();
+const cheer = express.Router();
 const fs = require('fs')
 
-subs.get('/', async (req, res) => {
+cheer.get('/', async (req, res) => {
   try {
     const data = fs.readFileSync('/srv/goombotio/recent_cheer.txt', 'utf-8');
     res.set('Content-Type', 'text/html');
@@ -14,4 +14,4 @@ subs.get('/', async (req, res) => {
   }
 });
 
-module.exports = subs;
+module.exports = cheer;
