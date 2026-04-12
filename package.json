@@ -18,8 +18,8 @@
   },
   "dependencies": {
     "apicache": "^1.6.2",
-    "cors": "^2.8.5",
-    "express": "^4.21.1",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
     "mongodb": "^3.5.9",
     "redis": "^3.1.2"
   }
