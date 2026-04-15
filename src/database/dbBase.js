@@ -8,13 +8,13 @@ const DB_PASSWORD = process.env.DB_PASSWORD;
 console.log(DB_PASSWORD);
 
 const client = new MongoClient(
-  `mongodb://${DB_USERNAME}:${DB_PASSWORD}@${uri}/${dbName}?authMechanism=DEFAULT`,
+  `mongodb://${DB_USERNAME}:${DB_PASSWORD}@${uri}/${dbName}?authMechanism=DEFAULT&authSource=admin`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   },
 );
-client.connect().then(r => console.log('Successfully connected to database'));
+client.connect().then(() => console.log('Successfully connected to database'));
 
 export const findOne = async (collection, query) => {
   try {
